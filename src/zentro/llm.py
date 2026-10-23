@@ -79,7 +79,7 @@ def chat(messages: list[dict], tools: list[dict] | None = None, temperature: flo
             text = str(e).lower()
             if status in (429, 500, 502, 503, 504) or "rate" in text or "timeout" in text or "timed out" in text or "connection" in text \
                     or "overloaded" in text or "unavailable" in text:
-                wait = _wait_seconds(e, attempt) if status == 429 else 20.0
+                wait = min(120.0, _wait_seconds(e, attempt)) if status == 429 else 20.0
                 _cooldown[(prov, model)] = time.time() + wait
                 continue
             if status == 400 and "thought_signature" in text:

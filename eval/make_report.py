@@ -79,7 +79,7 @@ ul {{ margin:3px 0 3px 18px; padding:0; }} li {{ margin:1px 0; }}
 .pipe {{ background:#f7f5ff; border:1px solid #e5e1f7; padding:6px 10px; border-radius:6px; font-family: monospace; font-size:9pt; }}
 </style></head><body>
 <h1>ZentroMart VoiceOps: grounded voice support agent</h1>
-<div class="sub">VoiceOps 2026 capstone · {AUTHOR} · Speech: Gnani STT + TTS only · Step 1 model: <code>openai/gpt-oss-120b</code> (Groq) · Models that answered the final Step 2/3 runs (number of turns): {model_mix}</div>
+<div class="sub">VoiceOps 2026 capstone · {AUTHOR} · Speech: Gnani STT + TTS only · Step 1 model: <code>openai/gpt-oss-120b</code> (Groq) · Models that answered the reported Step 2/3 runs (approximate turn counts, logged per answer): {model_mix}</div>
 <div class="pipe">customer audio → Gnani STT (en-IN + hi-IN) → agent [hybrid RAG · conversation state · lookup_order · create_ticket · date tool] → Gnani TTS (timbre-v2.5) → spoken reply</div>
 
 <h2>1. What I built in each step</h2>
@@ -119,6 +119,7 @@ ul {{ margin:3px 0 3px 18px; padding:0; }} li {{ margin:1px 0; }}
 <h2>4. What went wrong and how I fixed it</h2>
 <ul>
 <li><b>Free-tier limits.</b> Groq allows 8,000 tokens/min, and the first prompt (all agent guides plus 8 verbose chunks) used about 9k per turn. I compacted the chunk rendering and moved KB-00 into retrieval (about 3k tokens per call), and added an automatic fallback chain (Groq gpt-oss-120b → Groq Qwen → Gemini Flash) with per-model cool-downs. Gemini rejected tool histories created by another model (missing <code>thought_signature</code>), so the history is replayed as text when that happens.</li>
+<li><b>Which model answered.</b> Because of the free-tier daily caps, most of the reported Step 2/3 turns were answered by fallback models rather than the primary gpt-oss-120b (mix in the header). The numbers are therefore a conservative estimate for the primary model.</li>
 <li><b>A weak fallback hurt quality.</b> In the first Step 2 run ({s2r1.get('correct', '–')}/52) almost every miss came from Gemini Flash Lite, which skipped the date tool and miscounted business days. I removed it and added a pre-computed date helper for every date the customer mentions.</li>
 <li><b>Language drift.</b> English conversations sometimes got Hinglish replies. The customer's language is now detected in code and stated to the model on every turn.</li>
 <li><b>Decision labels and verification turns.</b> The model escalated on the verification turn when <code>contacts_last_7_days=2</code>, or called a verification question "answer". Labels for code-driven steps are now deterministic, and <code>create_ticket</code> is not offered on a turn that only answers the verification question.</li>

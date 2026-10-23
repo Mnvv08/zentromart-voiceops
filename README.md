@@ -66,6 +66,18 @@ Scoring follows `DATA_DICTIONARY.md`: decision in `acceptable_decisions`, every 
 (alternatives with `/`, dates normalised), no `must_not_include` phrase, plus expected tool calls for conversations
 and gold-evidence recall for retrieval. Results are written to `eval/results/`.
 
+
+## Results on the practice sets
+
+| Evaluation | Result |
+| --- | --- |
+| Step 1: LLM only (52 questions) | 13/52 correct (25%) |
+| Step 2: grounded RAG agent (52 questions) | 40/52 correct (77%) in the full run; after fixes, 8 of the 12 misses pass on re-test |
+| Step 3: 23 conversations (96 turns) | 89/96 turns correct (93%), tool calls 99%, decisions 97% |
+| Retrieval (gold section IDs found) | 97% of gold sections retrieved on Step 3 |
+
+Details, failure analysis and what I would improve are in `report.pdf`. Raw summaries are in `eval/results/`.
+
 ## How it works
 
 | Part | File | Notes |

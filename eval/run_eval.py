@@ -88,6 +88,8 @@ def run_questions(step: int, limit: int | None, use_asr: bool, ids: set | None) 
             "tool_calls": res.tool_calls if res else [], "latency_s": res.latency_s if res else None,
             "model_used": llm.last_model_used,
         }
+        with open(OUT / "partial_questions.jsonl", "a", encoding="utf-8") as fh:
+            fh.write(json.dumps(row, ensure_ascii=False, default=str) + "\n")
         flag = "OK " if row["correct"] else "XX "
         print(f"{flag}{r['id']} dec={row['decision']}/{r['expected_decision']} "
               f"mi={mi_ok} mn={mn_ok} | {reply[:110]!r}", flush=True)
