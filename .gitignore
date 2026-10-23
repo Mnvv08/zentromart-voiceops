@@ -9,3 +9,4 @@ Capstone_Project_Dataset_FTTT_2026/
 *.zip
 .DS_Store
 eval/results/*.jsonl
+demo.mov
