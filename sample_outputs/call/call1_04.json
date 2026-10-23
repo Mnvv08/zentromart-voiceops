@@ -1,0 +1,123 @@
+{
+  "file": "call1_04.wav",
+  "call": "call1",
+  "turn": 4,
+  "transcript": "and what if i am not at home",
+  "stt_transcripts": {
+    "en-IN": "and what if i am not at home",
+    "hi-IN": "एन्ड व्हॉट इफ़ आई एम नॉट एट होम"
+  },
+  "reply_text": "If you are not at home, the courier will make up to three delivery attempts. You will receive an SMS after a failed attempt to reschedule the delivery. If the third attempt also fails, the order 2629 5015 will be returned to our warehouse.",
+  "reply_spoken_text": "If you are not at home, the courier will make up to three delivery attempts. You will receive an SMS after a failed attempt to reschedule the delivery. If the third attempt also fails, the order 2629 5015 will be returned to our warehouse.",
+  "reply_audio": "call1_04_reply.wav",
+  "decision": "answer",
+  "sources_used": [
+    "DEL-3",
+    "REF-1"
+  ],
+  "chunks_used": [
+    {
+      "id": "REF-1",
+      "title": "When a refund is initiated",
+      "doc": "POL-REF",
+      "score": 0.0287,
+      "text": "- **Cancelled before shipping:** immediately on cancellation.\n- **Returned item:** after the item passes quality check, within 2 business days of pickup. ZentroMart Plus members: at pickup.\n- **Prepaid order refused at the door or not delivered after 3 attempts:** once the parcel reaches the warehouse, usually 7 to 10 calendar days after the last delivery attempt."
+    },
+    {
+      "id": "DEL-3",
+      "title": "Delivery attempts",
+      "doc": "POL-DEL",
+      "score": 0.0333,
+      "text": "The courier makes up to 3 delivery attempts. After a failed attempt the customer gets an SMS to reschedule. If the third attempt fails, the parcel is returned to the warehouse (return to origin, RTO) and REF-1 applies."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "PAY-3",
+      "title": "Failed payments",
+      "doc": "POL-PAY",
+      "score": 0.0298,
+      "text": "If money was deducted but the order was not placed, the amount is reversed automatically by the payment provider within 5 business days. No ticket is needed before that."
+    },
+    {
+      "id": "RVP-3",
+      "title": "Item rejected at the door",
+      "doc": "HLP-RVP",
+      "score": 0.0292,
+      "text": "If the item fails the doorstep check, the executive will not collect it, and the customer gets an SMS with the reason."
+    },
+    {
+      "id": "REF-1",
+      "title": "When a refund is initiated",
+      "doc": "POL-REF",
+      "score": 0.0287,
+      "text": "- **Cancelled before shipping:** immediately on cancellation.\n- **Returned item:** after the item passes quality check, within 2 business days of pickup. ZentroMart Plus members: at pickup.\n- **Prepaid order refused at the door or not delivered after 3 attempts:** once the parcel reaches the warehouse, usually 7 to 10 calendar days after the last delivery attempt."
+    },
+    {
+      "id": "RET-5",
+      "title": "Items that cannot be returned",
+      "doc": "POL-RET",
+      "score": 0.0284,
+      "text": "Grocery and fresh produce, innerwear, lingerie and swimwear, and gift cards or digital codes cannot be returned for change of mind. If such an item arrives damaged, expired, wrong or missing, follow the Damaged, wrong or missing items policy."
+    },
+    {
+      "id": "WAR-3",
+      "title": "What warranty does not cover",
+      "doc": "POL-WAR",
+      "score": 0.0283,
+      "text": "Physical damage, liquid damage, normal wear and unauthorised repairs are not covered."
+    },
+    {
+      "id": "TRK-2",
+      "title": "Delivered but not received",
+      "doc": "HLP-TRK",
+      "score": 0.0282,
+      "text": "If an order shows Delivered but the customer has not received it, check with family, neighbours or the building security, then report it within 48 hours as a missing item under DWM-1."
+    },
+    {
+      "id": "DEL-3",
+      "title": "Delivery attempts",
+      "doc": "POL-DEL",
+      "score": 0.0333,
+      "text": "The courier makes up to 3 delivery attempts. After a failed attempt the customer gets an SMS to reschedule. If the third attempt fails, the parcel is returned to the warehouse (return to origin, RTO) and REF-1 applies."
+    },
+    {
+      "id": "DEL-1",
+      "title": "Delivery times",
+      "doc": "POL-DEL",
+      "score": 0.0313,
+      "text": "| Delivery type | Metro cities | Other locations |\n| --- | --- | --- |\n| Standard | 3 to 6 business days | 5 to 9 business days |\n| Express (selected pincodes) | Next business day if ordered before 2 pm, otherwise the business day after | Not available |\n\nEach order shows a promised delivery date at checkout. That date is the commitment."
+    },
+    {
+      "id": "DEL-2",
+      "title": "Delivery fees",
+      "doc": "POL-DEL",
+      "score": 0.0304,
+      "text": "Standard delivery is free on orders of ₹499 or more; below that a ₹40 fee applies. Express delivery costs ₹79 and is free for ZentroMart Plus members."
+    },
+    {
+      "id": "DEL-5",
+      "title": "Where we deliver",
+      "doc": "POL-DEL",
+      "score": 0.0299,
+      "text": "ZentroMart delivers only within India, to pincodes listed as serviceable in the pincode table. Cash on delivery and Express are available only where the pincode table says so (`cod_available`, `express_available`). Not every metro pincode has Express."
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "delivery attempts not at home policy"
+      },
+      "result": [
+        "DEL-3",
+        "PAY-3",
+        "DEL-1",
+        "DEL-2",
+        "DEL-5"
+      ]
+    }
+  ],
+  "seconds": 11.88,
+  "error": ""
+}

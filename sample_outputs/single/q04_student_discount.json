@@ -1,0 +1,72 @@
+{
+  "file": "q04_student_discount.wav",
+  "call": "q04_student_discount",
+  "turn": 1,
+  "transcript": "is there a student discount",
+  "stt_transcripts": {
+    "en-IN": "is there a student discount",
+    "hi-IN": "इज़ देर ए स्टूडेंट डिस्काउंट"
+  },
+  "reply_text": "I am ZentroMart's AI support assistant. I don't have information about student discounts. Would you like to speak with a human colleague for more help?",
+  "reply_spoken_text": "I am ZentroMart's AI support assistant. I don't have information about student discounts. Would you like to speak with a human colleague for more help?",
+  "reply_audio": "q04_student_discount_reply.wav",
+  "decision": "answer",
+  "sources_used": [
+    "STY-1"
+  ],
+  "chunks_used": [
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "PAY-2",
+      "title": "Cash on delivery",
+      "doc": "POL-PAY",
+      "score": 0.0321,
+      "text": "COD is available on orders up to ₹10,000, only on pincodes where COD is enabled. A COD fee of ₹25 applies per order."
+    },
+    {
+      "id": "REF-4",
+      "title": "Partial refunds and coupons",
+      "doc": "POL-REF",
+      "score": 0.0316,
+      "text": "If part of an order is returned, the refund is the price paid for that item after its share of any coupon discount. If the remaining order falls below the coupon's minimum order value, the coupon discount on the remaining items is deducted from the refund."
+    },
+    {
+      "id": "DEL-2",
+      "title": "Delivery fees",
+      "doc": "POL-DEL",
+      "score": 0.0315,
+      "text": "Standard delivery is free on orders of ₹499 or more; below that a ₹40 fee applies. Express delivery costs ₹79 and is free for ZentroMart Plus members."
+    },
+    {
+      "id": "RET-9",
+      "title": "Exchanges",
+      "doc": "POL-RET",
+      "score": 0.0304,
+      "text": "Exchanges for a different size or colour are available on clothing and footwear within the return window, subject to stock. If the new size is out of stock, a return and refund is offered instead."
+    },
+    {
+      "id": "RET-6",
+      "title": "Reverse pickup and fees",
+      "doc": "POL-RET",
+      "score": 0.0293,
+      "text": "Returns are collected from the delivery address through reverse pickup. A reverse pickup fee of ₹49 applies to change-of-mind returns of clothing, footwear and bags. The fee is waived for ZentroMart Plus members and for any item returned because it was damaged, defective or wrong."
+    },
+    {
+      "id": "FAQ-3",
+      "title": "Is delivery free?",
+      "doc": "FAQ-GEN",
+      "score": 0.0289,
+      "text": "Delivery is free on most orders."
+    }
+  ],
+  "tool_calls": [],
+  "seconds": 11.02,
+  "error": ""
+}

@@ -1,0 +1,88 @@
+{
+  "file": "q07_express_late.wav",
+  "call": "q07_express_late",
+  "turn": 1,
+  "transcript": "my express order arrived a day late do i get anything back",
+  "stt_transcripts": {
+    "en-IN": "my express order arrived a day late do i get anything back",
+    "hi-IN": "माइ एक्सप्रेस ऑर्डर अराइव्ड ए डे लेट डू आई गैट एनिथिंग बैक"
+  },
+  "reply_text": "Hi, I'm ZentroMart's AI support assistant. Yes, if your express order arrives after the promised date, the ₹79 express fee you paid will be credited to your ZentroMart Wallet automatically within 48 hours. No other compensation is provided for late express deliveries.",
+  "reply_spoken_text": "Hi, I'm ZentroMart's AI support assistant. Yes, if your express order arrives after the promised date, the 79 rupees express fee you paid will be credited to your ZentroMart Wallet automatically within 48 hours. No other compensation is provided for late express deliveries.",
+  "reply_audio": "q07_express_late_reply.wav",
+  "decision": "answer",
+  "sources_used": [
+    "DEL-4",
+    "DEL-1",
+    "STY-1"
+  ],
+  "chunks_used": [
+    {
+      "id": "DEL-4",
+      "title": "Late deliveries",
+      "doc": "POL-DEL",
+      "score": 0.0333,
+      "text": "If an **Express** order arrives after its promised date, the ₹79 express fee the customer paid is credited to ZentroMart Wallet automatically within 48 hours. ZentroMart Plus members, who pay no express fee, get no credit. There is no compensation for late Standard deliveries. Agents must not offer any other compensation."
+    },
+    {
+      "id": "DEL-1",
+      "title": "Delivery times",
+      "doc": "POL-DEL",
+      "score": 0.0318,
+      "text": "| Delivery type | Metro cities | Other locations |\n| --- | --- | --- |\n| Standard | 3 to 6 business days | 5 to 9 business days |\n| Express (selected pincodes) | Next business day if ordered before 2 pm, otherwise the business day after | Not available |\n\nEach order shows a promised delivery date at checkout. That date is the commitment."
+    },
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "DEL-4",
+      "title": "Late deliveries",
+      "doc": "POL-DEL",
+      "score": 0.0333,
+      "text": "If an **Express** order arrives after its promised date, the ₹79 express fee the customer paid is credited to ZentroMart Wallet automatically within 48 hours. ZentroMart Plus members, who pay no express fee, get no credit. There is no compensation for late Standard deliveries. Agents must not offer any other compensation."
+    },
+    {
+      "id": "DEL-1",
+      "title": "Delivery times",
+      "doc": "POL-DEL",
+      "score": 0.0318,
+      "text": "| Delivery type | Metro cities | Other locations |\n| --- | --- | --- |\n| Standard | 3 to 6 business days | 5 to 9 business days |\n| Express (selected pincodes) | Next business day if ordered before 2 pm, otherwise the business day after | Not available |\n\nEach order shows a promised delivery date at checkout. That date is the commitment."
+    },
+    {
+      "id": "CAN-3",
+      "title": "Grocery delivery slots",
+      "doc": "POL-CAN",
+      "score": 0.0309,
+      "text": "Grocery orders can be cancelled up to 2 hours before the start of the chosen delivery slot.\nIf the slot start time is not in the order record, ask the customer for the time shown in My Orders before confirming whether the cutoff has passed."
+    },
+    {
+      "id": "DEL-2",
+      "title": "Delivery fees",
+      "doc": "POL-DEL",
+      "score": 0.0294,
+      "text": "Standard delivery is free on orders of ₹499 or more; below that a ₹40 fee applies. Express delivery costs ₹79 and is free for ZentroMart Plus members."
+    },
+    {
+      "id": "CAN-1",
+      "title": "Before the order ships",
+      "doc": "POL-CAN",
+      "score": 0.0293,
+      "text": "Any order can be cancelled free of charge until it is shipped, by the customer from My Orders in the app. The support assistant cannot cancel orders itself; it guides the customer to My Orders. The refund is initiated immediately."
+    },
+    {
+      "id": "TRK-1",
+      "title": "Order statuses",
+      "doc": "HLP-TRK",
+      "score": 0.0279,
+      "text": "| Status shown | What it means |\n| --- | --- |\n| Placed | Payment confirmed, waiting to be packed |\n| Packed | Packed at the warehouse, waiting for courier pickup |\n| Shipped | With the courier, on the way |\n| Out for delivery | With the delivery executive today |\n| Delivery attempted | The courier could not deliver; see DEL-3 |\n| Delivered | Handed over at the address |\n| Returned to origin (RTO) | Could not be delivered and is going back to the warehouse; prepaid refunds follow REF-1 |\n| Cancelled | Cancelled before shipping |"
+    }
+  ],
+  "tool_calls": [],
+  "seconds": 9.82,
+  "error": ""
+}

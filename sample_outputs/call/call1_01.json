@@ -1,0 +1,79 @@
+{
+  "file": "call1_01.wav",
+  "call": "call1",
+  "turn": 1,
+  "transcript": "hi i need some help with an order",
+  "stt_transcripts": {
+    "en-IN": "hi i need some help with an order",
+    "hi-IN": "हाई आई नीड सम हेल्प विथ एन ऑर्डर"
+  },
+  "reply_text": "Hello! I am ZentroMart's AI support assistant. I would be happy to help you with your order. Could you please provide your order ID?",
+  "reply_spoken_text": "Hello! I am ZentroMart's AI support assistant. I would be happy to help you with your order. Could you please provide your order ID?",
+  "reply_audio": "call1_01_reply.wav",
+  "decision": "clarify",
+  "sources_used": [
+    "STY-1",
+    "IDV-2"
+  ],
+  "chunks_used": [
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    },
+    {
+      "id": "IDV-2",
+      "title": "How to verify",
+      "doc": "AGT-IDV",
+      "text": "Ask for the order ID, then ask for **one** of: the last 4 digits of the registered phone number, or the delivery pincode for that order. Compare with the `phone_last4` or `delivery_pincode` fields from order lookup."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "TRK-1",
+      "title": "Order statuses",
+      "doc": "HLP-TRK",
+      "score": 0.0306,
+      "text": "| Status shown | What it means |\n| --- | --- |\n| Placed | Payment confirmed, waiting to be packed |\n| Packed | Packed at the warehouse, waiting for courier pickup |\n| Shipped | With the courier, on the way |\n| Out for delivery | With the delivery executive today |\n| Delivery attempted | The courier could not deliver; see DEL-3 |\n| Delivered | Handed over at the address |\n| Returned to origin (RTO) | Could not be delivered and is going back to the warehouse; prepaid refunds follow REF-1 |\n| Cancelled | Cancelled before shipping |"
+    },
+    {
+      "id": "TRK-2",
+      "title": "Delivered but not received",
+      "doc": "HLP-TRK",
+      "score": 0.0301,
+      "text": "If an order shows Delivered but the customer has not received it, check with family, neighbours or the building security, then report it within 48 hours as a missing item under DWM-1."
+    },
+    {
+      "id": "MKS-1",
+      "title": "Who ships your order",
+      "doc": "POL-MKT",
+      "score": 0.0297,
+      "text": "Each product in the catalog has a `fulfilled_by` field. Items are either fulfilled by ZentroMart or by an independent marketplace seller."
+    },
+    {
+      "id": "CAN-2",
+      "title": "After the order ships",
+      "doc": "POL-CAN",
+      "score": 0.0289,
+      "text": "A shipped order cannot be cancelled. The customer can:\n- refuse the parcel at the door. For cash-on-delivery orders nothing is charged. For prepaid orders the refund follows REF-1 once the parcel returns to the warehouse; or\n- accept the delivery and return the item within its return window, if the category is returnable."
+    },
+    {
+      "id": "CAN-1",
+      "title": "Before the order ships",
+      "doc": "POL-CAN",
+      "score": 0.0289,
+      "text": "Any order can be cancelled free of charge until it is shipped, by the customer from My Orders in the app. The support assistant cannot cancel orders itself; it guides the customer to My Orders. The refund is initiated immediately."
+    },
+    {
+      "id": "CAN-4",
+      "title": "Partial cancellation",
+      "doc": "POL-CAN",
+      "score": 0.0289,
+      "text": "Individual items in a multi-item order can be cancelled before they ship. Coupon rules in REF-4 apply."
+    }
+  ],
+  "tool_calls": [],
+  "seconds": 9.35,
+  "error": ""
+}

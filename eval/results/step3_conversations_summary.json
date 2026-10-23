@@ -1,0 +1,17 @@
+{
+  "run": "step3_conversations",
+  "model": "groq:openai/gpt-oss-120b",
+  "n": 96,
+  "correct": 89,
+  "accuracy": 0.927,
+  "decision_acc": 0.969,
+  "must_include_acc": 0.948,
+  "must_not_ok": 1.0,
+  "retrieval_recall_cited": 0.951,
+  "retrieval_recall_retrieved": 0.969,
+  "avg_latency_s": 15.336,
+  "time": "2026-10-23 15:06",
+  "tool_acc": 0.99,
+  "conversations_fully_correct": 16,
+  "conversations": 23
+}

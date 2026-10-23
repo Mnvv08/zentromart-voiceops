@@ -1,0 +1,6 @@
+openai>=1.40
+fastembed>=0.3.6
+numpy>=1.24
+gnani-vachana>=0.8.2
+python-dotenv>=1.0
+flask>=3.0

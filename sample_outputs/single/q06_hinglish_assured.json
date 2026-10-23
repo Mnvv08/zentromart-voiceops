@@ -1,0 +1,199 @@
+{
+  "file": "q06_hinglish_assured.wav",
+  "call": "q06_hinglish_assured",
+  "turn": 1,
+  "transcript": "s q e l e 0012 p zentromart assured hai kya",
+  "stt_transcripts": {
+    "en-IN": "s q e l e 0012 p zentromart assured hai kya",
+    "hi-IN": "एस क्यू ई एल ई 0012 पी ज़ेंट्रोमॉट अश्योर्ड है क्या, क्लेम कैसे करें।"
+  },
+  "reply_text": "नमस्ते, मैं ज़ेंट्रोमार्ट का एआई सहायता सहायक हूँ। हाँ, केस्ट्रेल के7 स्मार्टफोन (SKU ELE-0012) ज़ेंट्रोमार्ट अश्योर्ड है। आप ऐप में 'My Orders' सेक्शन में जाकर क्लेम कर सकते हैं, जिसके बाद ज़ेंट्रोमार्ट पिकअप और मरम्मत या बदलने का इंतज़ाम करेगा।",
+  "reply_spoken_text": "नमस्ते, मैं ज़ेंट्रोमार्ट का एआई सहायता सहायक हूँ। हाँ, केस्ट्रेल के7 स्मार्टफोन (SKU ELE-0012) ज़ेंट्रोमार्ट अश्योर्ड है। आप ऐप में 'My Orders' सेक्शन में जाकर क्लेम कर सकते हैं, जिसके बाद ज़ेंट्रोमार्ट पिकअप और मरम्मत या बदलने का इंतज़ाम करेगा।",
+  "reply_audio": "q06_hinglish_assured_reply.wav",
+  "decision": "answer",
+  "sources_used": [
+    "products.csv:ELE-0012",
+    "WAR-2",
+    "STY-1",
+    "STY-3",
+    "STY-4"
+  ],
+  "chunks_used": [
+    {
+      "id": "WAR-2",
+      "title": "ZentroMart Assured",
+      "doc": "POL-WAR",
+      "score": 0.0293,
+      "text": "Products marked `assured = true` in the catalog carry a 12-month ZentroMart Assured warranty from the delivery date, in addition to any brand warranty. Claims are raised in the app under My Orders, and ZentroMart arranges pickup and repair or replacement."
+    },
+    {
+      "id": "products.csv:ELE-0012",
+      "title": "Kestrel K7 Smartphone 128 GB, Beige",
+      "doc": "CATALOG",
+      "score": 0.0185,
+      "text": "SKU ELE-0012: Kestrel K7 Smartphone 128 GB, Beige (brand Kestrel). return_category: electronics. price_inr: 17549. fulfilled_by: ZentroMart. assured: True. warranty_months: 12. Kestrel K7 Smartphone 128 GB, Beige. Sold on ZentroMart."
+    },
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    },
+    {
+      "id": "STY-3",
+      "title": "Voice replies",
+      "doc": "AGT-STY",
+      "text": "When replying by voice, keep it to two or three short sentences. Say dates with the month name (\"the 24th of October\"), read order IDs in groups of four digits, and say amounts in rupees (\"forty-nine rupees\")."
+    },
+    {
+      "id": "STY-4",
+      "title": "Language",
+      "doc": "AGT-STY",
+      "text": "Reply in the language the customer uses. If the customer switches language, switch with them."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "WAR-1",
+      "title": "Brand warranty",
+      "doc": "POL-WAR",
+      "score": 0.0313,
+      "text": "Most electronics come with the manufacturer's warranty. The warranty period is listed in the `warranty_months` column of the product catalog. Brand warranty claims are made with the manufacturer's service centre."
+    },
+    {
+      "id": "WAR-2",
+      "title": "ZentroMart Assured",
+      "doc": "POL-WAR",
+      "score": 0.0293,
+      "text": "Products marked `assured = true` in the catalog carry a 12-month ZentroMart Assured warranty from the delivery date, in addition to any brand warranty. Claims are raised in the app under My Orders, and ZentroMart arranges pickup and repair or replacement."
+    },
+    {
+      "id": "REF-6",
+      "title": "Refund reference number",
+      "doc": "POL-REF",
+      "score": 0.0231,
+      "text": "Every initiated refund has a refund reference number (RRN) that the customer's bank can trace. Share it when a customer says the money has not arrived."
+    },
+    {
+      "id": "MKS-3",
+      "title": "Warranty",
+      "doc": "POL-MKT",
+      "score": 0.0219,
+      "text": "ZentroMart Assured never applies to marketplace seller items, even if the listing says assured. Seller items carry only the brand warranty."
+    },
+    {
+      "id": "FAQH-4",
+      "title": "ZentroMart Plus में क्या मिलता है?",
+      "doc": "FAQ-HIN",
+      "score": 0.0217,
+      "text": "मुफ़्त एक्सप्रेस डिलीवरी, किसी भी रिटर्न पर पिकअप फ़ीस नहीं, और रिटर्न का रिफ़ंड पिकअप के समय ही शुरू हो जाता है।"
+    },
+    {
+      "id": "FAQH-3",
+      "title": "खराब या गलत सामान आया तो क्या करें?",
+      "doc": "FAQ-HIN",
+      "score": 0.0211,
+      "text": "डिलीवरी के 48 घंटे के अंदर सामान और पैकेट की फ़ोटो के साथ शिकायत करें। जाँच के बाद मुफ़्त रिप्लेसमेंट या पूरा रिफ़ंड मिलेगा।"
+    },
+    {
+      "id": "TRB-2",
+      "title": "Smartwatch not syncing",
+      "doc": "HLP-TRB",
+      "score": 0.0113,
+      "text": "1. Make sure the companion app has Bluetooth and location permission.\n2. Restart the watch and the phone.\n3. Unpair the watch in the app and pair it again."
+    },
+    {
+      "id": "TRB-3",
+      "title": "Phone charging slowly",
+      "doc": "HLP-TRB",
+      "score": 0.0103,
+      "text": "1. Use the original cable and adapter.\n2. Clean the charging port gently with a dry, soft brush.\n3. Turn on airplane mode while charging to check whether background apps are the cause."
+    },
+    {
+      "id": "products.csv:ELE-0024",
+      "title": "Orbix USB-C Cable 1.5 m, Grey",
+      "doc": "CATALOG",
+      "score": 0.01,
+      "text": "SKU ELE-0024: Orbix USB-C Cable 1.5 m, Grey (brand Orbix). return_category: electronics. price_inr: 319. fulfilled_by: ZentroMart. assured: True. warranty_months: 3. Orbix USB-C Cable 1.5 m, Grey. Sold on ZentroMart."
+    },
+    {
+      "id": "products.csv:ELE-0005",
+      "title": "Nimbus X2 Lite Wireless Earbuds, Grey",
+      "doc": "CATALOG",
+      "score": 0.0098,
+      "text": "SKU ELE-0005: Nimbus X2 Lite Wireless Earbuds, Grey (brand Nimbus). return_category: electronics. price_inr: 1229. fulfilled_by: ZentroMart. assured: True. warranty_months: 6. Nimbus X2 Lite Wireless Earbuds, Grey. Sold on ZentroMart."
+    },
+    {
+      "id": "products.csv:ELE-0025",
+      "title": "Orbix USB-C Cable 1.5 m, Maroon",
+      "doc": "CATALOG",
+      "score": 0.0097,
+      "text": "SKU ELE-0025: Orbix USB-C Cable 1.5 m, Maroon (brand Orbix). return_category: electronics. price_inr: 349. fulfilled_by: Sunrise Electronics. assured: True. warranty_months: 3. Orbix USB-C Cable 1.5 m, Maroon. Sold on ZentroMart. Ships from a marketplace seller."
+    },
+    {
+      "id": "products.csv:ELE-0012",
+      "title": "Kestrel K7 Smartphone 128 GB, Beige",
+      "doc": "CATALOG",
+      "score": 0.0185,
+      "text": "SKU ELE-0012: Kestrel K7 Smartphone 128 GB, Beige (brand Kestrel). return_category: electronics. price_inr: 17549. fulfilled_by: ZentroMart. assured: True. warranty_months: 12. Kestrel K7 Smartphone 128 GB, Beige. Sold on ZentroMart."
+    },
+    {
+      "id": "products.csv:ELE-0001",
+      "title": "Nimbus X2 Wireless Earbuds, Beige",
+      "doc": "CATALOG",
+      "score": 0.0184,
+      "text": "SKU ELE-0001: Nimbus X2 Wireless Earbuds, Beige (brand Nimbus). return_category: electronics. price_inr: 2199. fulfilled_by: ZentroMart. assured: True. warranty_months: 12. Nimbus X2 Wireless Earbuds, Beige. Sold on ZentroMart."
+    },
+    {
+      "id": "products.csv:ELE-0008",
+      "title": "Voltra PowerCell 10000 mAh Power Bank, Green",
+      "doc": "CATALOG",
+      "score": 0.0182,
+      "text": "SKU ELE-0008: Voltra PowerCell 10000 mAh Power Bank, Green (brand Voltra). return_category: electronics. price_inr: 1059. fulfilled_by: ZentroMart. assured: True. warranty_months: 6. Voltra PowerCell 10000 mAh Power Bank, Green. Sold on ZentroMart."
+    },
+    {
+      "id": "products.csv:ELE-0011",
+      "title": "Kestrel K7 Smartphone 128 GB, White",
+      "doc": "CATALOG",
+      "score": 0.018,
+      "text": "SKU ELE-0011: Kestrel K7 Smartphone 128 GB, White (brand Kestrel). return_category: electronics. price_inr: 17139. fulfilled_by: ZentroMart. assured: False. warranty_months: 12. Kestrel K7 Smartphone 128 GB, White. Sold on ZentroMart."
+    },
+    {
+      "id": "products.csv:ELE-0007",
+      "title": "Voltra PowerCell 20000 mAh Power Bank, Beige",
+      "doc": "CATALOG",
+      "score": 0.0179,
+      "text": "SKU ELE-0007: Voltra PowerCell 20000 mAh Power Bank, Beige (brand Voltra). return_category: electronics. price_inr: 1709. fulfilled_by: ZentroMart. assured: False. warranty_months: 6. Voltra PowerCell 20000 mAh Power Bank, Beige. Sold on ZentroMart."
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "SQELE0012P"
+      },
+      "result": [
+        "TRB-2",
+        "TRB-3",
+        "products.csv:ELE-0024",
+        "products.csv:ELE-0005",
+        "products.csv:ELE-0025"
+      ]
+    },
+    {
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "ELE-0012"
+      },
+      "result": [
+        "products.csv:ELE-0012",
+        "products.csv:ELE-0001",
+        "products.csv:ELE-0008",
+        "products.csv:ELE-0011",
+        "products.csv:ELE-0007"
+      ]
+    }
+  ],
+  "seconds": 13.66,
+  "error": ""
+}

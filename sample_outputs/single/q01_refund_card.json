@@ -1,0 +1,95 @@
+{
+  "file": "q01_refund_card.wav",
+  "call": "q01_refund_card",
+  "turn": 1,
+  "transcript": "my refund to credit card was started on 17th October 2026 by which date should i have it",
+  "stt_transcripts": {
+    "en-IN": "my refund to credit card was started on 17th October 2026 by which date should i have it",
+    "hi-IN": "माइ रिफंड टू क्रेडिट कार्ड वॉज़ स्टार्टेड ऑन सेवेनतींठ ऑक्टोबर बाय"
+  },
+  "reply_text": "Hello, I am ZentroMart's AI support assistant. For credit card payments, refunds usually take five to seven business days to reach your account. Since yours was started on the 17th of October, you should receive it by the 27th of October 2026.",
+  "reply_spoken_text": "Hello, I am ZentroMart's AI support assistant. For credit card payments, refunds usually take five to seven business days to reach your account. Since yours was started on the 17th of October, you should receive it by the 27th of October 2026.",
+  "reply_audio": "q01_refund_card_reply.wav",
+  "decision": "answer",
+  "sources_used": [
+    "STY-1",
+    "STY-3",
+    "REF-2",
+    "KB-00.2"
+  ],
+  "chunks_used": [
+    {
+      "id": "REF-2",
+      "title": "How long refunds take after initiation",
+      "doc": "POL-REF",
+      "score": 0.0316,
+      "text": "Refunds go back to the original payment method. Timelines are counted in business days from the day the refund is initiated.\n\n| Payment method | Time to reach you |\n| --- | --- |\n| UPI | 1 to 3 business days |\n| Credit or debit card | 5 to 7 business days |\n| Net banking | 3 to 5 business days |\n| ZentroMart Wallet | Instant, within 2 hours |\n| Bank transfer (NEFT) for cash-on-delivery orders | 5 to 7 business days |\n| ZentroMart Wallet for cash-on-delivery orders | Instant, within 2 hours |"
+    },
+    {
+      "id": "KB-00.2",
+      "title": "Today's date",
+      "doc": "KB-00",
+      "score": 0.0288,
+      "text": "All records in this dataset are frozen on **20 October 2026**. Treat this date as \"today\" when you calculate deadlines, delays and refund timelines."
+    },
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    },
+    {
+      "id": "STY-3",
+      "title": "Voice replies",
+      "doc": "AGT-STY",
+      "text": "When replying by voice, keep it to two or three short sentences. Say dates with the month name (\"the 24th of October\"), read order IDs in groups of four digits, and say amounts in rupees (\"forty-nine rupees\")."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "REF-3",
+      "title": "Cash-on-delivery refunds",
+      "doc": "POL-REF",
+      "score": 0.0325,
+      "text": "For cash-on-delivery orders, the customer chooses either ZentroMart Wallet (instant) or a bank transfer. Bank transfers start only after the bank account details are verified, then take 5 to 7 business days."
+    },
+    {
+      "id": "REF-2",
+      "title": "How long refunds take after initiation",
+      "doc": "POL-REF",
+      "score": 0.0316,
+      "text": "Refunds go back to the original payment method. Timelines are counted in business days from the day the refund is initiated.\n\n| Payment method | Time to reach you |\n| --- | --- |\n| UPI | 1 to 3 business days |\n| Credit or debit card | 5 to 7 business days |\n| Net banking | 3 to 5 business days |\n| ZentroMart Wallet | Instant, within 2 hours |\n| Bank transfer (NEFT) for cash-on-delivery orders | 5 to 7 business days |\n| ZentroMart Wallet for cash-on-delivery orders | Instant, within 2 hours |"
+    },
+    {
+      "id": "PAY-3",
+      "title": "Failed payments",
+      "doc": "POL-PAY",
+      "score": 0.0294,
+      "text": "If money was deducted but the order was not placed, the amount is reversed automatically by the payment provider within 5 business days. No ticket is needed before that."
+    },
+    {
+      "id": "KB-00.2",
+      "title": "Today's date",
+      "doc": "KB-00",
+      "score": 0.0288,
+      "text": "All records in this dataset are frozen on **20 October 2026**. Treat this date as \"today\" when you calculate deadlines, delays and refund timelines."
+    },
+    {
+      "id": "RET-7",
+      "title": "After pickup",
+      "doc": "POL-RET",
+      "score": 0.0286,
+      "text": "Returned items go through a quality check (QC) at the warehouse. The refund is initiated within 2 business days of pickup once the item passes QC. For ZentroMart Plus members, the refund is initiated at the time of pickup. Refund timelines after initiation are in the Refunds policy."
+    },
+    {
+      "id": "REF-6",
+      "title": "Refund reference number",
+      "doc": "POL-REF",
+      "score": 0.0285,
+      "text": "Every initiated refund has a refund reference number (RRN) that the customer's bank can trace. Share it when a customer says the money has not arrived."
+    }
+  ],
+  "tool_calls": [],
+  "seconds": 10.57,
+  "error": ""
+}

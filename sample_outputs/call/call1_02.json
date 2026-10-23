@@ -1,0 +1,98 @@
+{
+  "file": "call1_02.wav",
+  "call": "call1",
+  "turn": 2,
+  "transcript": "the order number is 26295015",
+  "stt_transcripts": {
+    "en-IN": "the order number is 26295015",
+    "hi-IN": "दी ऑर्डर नंबर इज़ 26295015"
+  },
+  "reply_text": "Thank you. To help you with order 2629 5015, I need to verify your details first. Could you please tell me the delivery pincode or the last four digits of the phone number used for this order?",
+  "reply_spoken_text": "Thank you. To help you with order 2629 5015, I need to verify your details first. Could you please tell me the delivery pincode or the last four digits of the phone number used for this order?",
+  "reply_audio": "call1_02_reply.wav",
+  "decision": "clarify",
+  "sources_used": [
+    "IDV-1",
+    "IDV-2",
+    "STY-3"
+  ],
+  "chunks_used": [
+    {
+      "id": "IDV-1",
+      "title": "When verification is needed",
+      "doc": "AGT-IDV",
+      "text": "Before sharing anything about a specific order (status, items, address, amounts, refund details), verify the customer. General policy questions need no verification."
+    },
+    {
+      "id": "IDV-2",
+      "title": "How to verify",
+      "doc": "AGT-IDV",
+      "text": "Ask for the order ID, then ask for **one** of: the last 4 digits of the registered phone number, or the delivery pincode for that order. Compare with the `phone_last4` or `delivery_pincode` fields from order lookup."
+    },
+    {
+      "id": "STY-3",
+      "title": "Voice replies",
+      "doc": "AGT-STY",
+      "text": "When replying by voice, keep it to two or three short sentences. Say dates with the month name (\"the 24th of October\"), read order IDs in groups of four digits, and say amounts in rupees (\"forty-nine rupees\")."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "CAN-3",
+      "title": "Grocery delivery slots",
+      "doc": "POL-CAN",
+      "score": 0.0318,
+      "text": "Grocery orders can be cancelled up to 2 hours before the start of the chosen delivery slot.\nIf the slot start time is not in the order record, ask the customer for the time shown in My Orders before confirming whether the cutoff has passed."
+    },
+    {
+      "id": "CAN-1",
+      "title": "Before the order ships",
+      "doc": "POL-CAN",
+      "score": 0.0315,
+      "text": "Any order can be cancelled free of charge until it is shipped, by the customer from My Orders in the app. The support assistant cannot cancel orders itself; it guides the customer to My Orders. The refund is initiated immediately."
+    },
+    {
+      "id": "CAN-2",
+      "title": "After the order ships",
+      "doc": "POL-CAN",
+      "score": 0.0312,
+      "text": "A shipped order cannot be cancelled. The customer can:\n- refuse the parcel at the door. For cash-on-delivery orders nothing is charged. For prepaid orders the refund follows REF-1 once the parcel returns to the warehouse; or\n- accept the delivery and return the item within its return window, if the category is returnable."
+    },
+    {
+      "id": "REF-6",
+      "title": "Refund reference number",
+      "doc": "POL-REF",
+      "score": 0.0312,
+      "text": "Every initiated refund has a refund reference number (RRN) that the customer's bank can trace. Share it when a customer says the money has not arrived."
+    },
+    {
+      "id": "TRK-1",
+      "title": "Order statuses",
+      "doc": "HLP-TRK",
+      "score": 0.0304,
+      "text": "| Status shown | What it means |\n| --- | --- |\n| Placed | Payment confirmed, waiting to be packed |\n| Packed | Packed at the warehouse, waiting for courier pickup |\n| Shipped | With the courier, on the way |\n| Out for delivery | With the delivery executive today |\n| Delivery attempted | The courier could not deliver; see DEL-3 |\n| Delivered | Handed over at the address |\n| Returned to origin (RTO) | Could not be delivered and is going back to the warehouse; prepaid refunds follow REF-1 |\n| Cancelled | Cancelled before shipping |"
+    },
+    {
+      "id": "PAY-3",
+      "title": "Failed payments",
+      "doc": "POL-PAY",
+      "score": 0.0291,
+      "text": "If money was deducted but the order was not placed, the amount is reversed automatically by the payment provider within 5 business days. No ticket is needed before that."
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "lookup_order",
+      "args": {
+        "order_id": "26295015"
+      },
+      "result": {
+        "verification_required": true,
+        "order_id": "26295015",
+        "message": "Ask for the registered phone last 4 digits OR delivery pincode."
+      }
+    }
+  ],
+  "seconds": 9.93,
+  "error": ""
+}

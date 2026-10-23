@@ -1,0 +1,95 @@
+{
+  "file": "q05_hindi_damaged.wav",
+  "call": "q05_hindi_damaged",
+  "turn": 1,
+  "transcript": "mera saman tuta hua aaya hai ab kya karun",
+  "stt_transcripts": {
+    "en-IN": "mera saman tuta hua aaya hai ab kya karun",
+    "hi-IN": "मेरा सामान टूटा हुआ आया है, अब क्या करूँ?"
+  },
+  "reply_text": "नमस्ते, मैं ज़ेंट्रोमार्ट का एआई सपोर्ट असिस्टेंट हूँ। माफ़ कीजिए कि आपका सामान टूटा हुआ आया है, कृपया डिलीवरी के 48 घंटों के भीतर सामान और पैकेट की फ़ोटो के साथ शिकायत करें। क्या आप मुझे अपना ऑर्डर आईडी बता सकते हैं?",
+  "reply_spoken_text": "नमस्ते, मैं ज़ेंट्रोमार्ट का एआई सपोर्ट असिस्टेंट हूँ। माफ़ कीजिए कि आपका सामान टूटा हुआ आया है, कृपया डिलीवरी के 48 घंटों के भीतर सामान और पैकेट की फ़ोटो के साथ शिकायत करें। क्या आप मुझे अपना ऑर्डर आईडी बता सकते हैं?",
+  "reply_audio": "q05_hindi_damaged_reply.wav",
+  "decision": "clarify",
+  "sources_used": [
+    "STY-1",
+    "DWM-1",
+    "FAQH-3",
+    "IDV-2"
+  ],
+  "chunks_used": [
+    {
+      "id": "DWM-1",
+      "title": "Reporting window",
+      "doc": "POL-DWM",
+      "score": 0.0304,
+      "text": "Report a damaged, defective, expired, wrong or missing item within **48 hours of delivery**, with photos of the item and the packaging. This applies to every category, including grocery and other non-returnable items."
+    },
+    {
+      "id": "FAQH-3",
+      "title": "खराब या गलत सामान आया तो क्या करें?",
+      "doc": "FAQ-HIN",
+      "score": 0.0294,
+      "text": "डिलीवरी के 48 घंटे के अंदर सामान और पैकेट की फ़ोटो के साथ शिकायत करें। जाँच के बाद मुफ़्त रिप्लेसमेंट या पूरा रिफ़ंड मिलेगा।"
+    },
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    },
+    {
+      "id": "IDV-2",
+      "title": "How to verify",
+      "doc": "AGT-IDV",
+      "text": "Ask for the order ID, then ask for **one** of: the last 4 digits of the registered phone number, or the delivery pincode for that order. Compare with the `phone_last4` or `delivery_pincode` fields from order lookup."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "RET-5",
+      "title": "Items that cannot be returned",
+      "doc": "POL-RET",
+      "score": 0.0318,
+      "text": "Grocery and fresh produce, innerwear, lingerie and swimwear, and gift cards or digital codes cannot be returned for change of mind. If such an item arrives damaged, expired, wrong or missing, follow the Damaged, wrong or missing items policy."
+    },
+    {
+      "id": "DWM-1",
+      "title": "Reporting window",
+      "doc": "POL-DWM",
+      "score": 0.0304,
+      "text": "Report a damaged, defective, expired, wrong or missing item within **48 hours of delivery**, with photos of the item and the packaging. This applies to every category, including grocery and other non-returnable items."
+    },
+    {
+      "id": "FAQH-3",
+      "title": "खराब या गलत सामान आया तो क्या करें?",
+      "doc": "FAQ-HIN",
+      "score": 0.0294,
+      "text": "डिलीवरी के 48 घंटे के अंदर सामान और पैकेट की फ़ोटो के साथ शिकायत करें। जाँच के बाद मुफ़्त रिप्लेसमेंट या पूरा रिफ़ंड मिलेगा।"
+    },
+    {
+      "id": "DWM-2",
+      "title": "Resolution",
+      "doc": "POL-DWM",
+      "score": 0.0287,
+      "text": "After verification the customer gets a free replacement or a full refund, including delivery fees. No reverse pickup fee applies."
+    },
+    {
+      "id": "DWM-4",
+      "title": "Reported after 48 hours",
+      "doc": "POL-DWM",
+      "score": 0.0282,
+      "text": "Reports after 48 hours are handled as a normal return if the item is still within its return window. Otherwise the customer can use the brand or ZentroMart Assured warranty, if any."
+    },
+    {
+      "id": "RET-4",
+      "title": "Condition of returned items",
+      "doc": "POL-RET",
+      "score": 0.0282,
+      "text": "Items must be unused, with original tags, packaging, accessories and free gifts. Beauty and personal care products are returnable only if unopened with the seal intact. Electronics must not be physically damaged, and any screen lock or account lock must be removed."
+    }
+  ],
+  "tool_calls": [],
+  "seconds": 9.14,
+  "error": ""
+}

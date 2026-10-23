@@ -1,0 +1,112 @@
+{
+  "file": "call1_03.wav",
+  "call": "call1",
+  "turn": 3,
+  "transcript": "the last four digits are 8,752",
+  "stt_transcripts": {
+    "en-IN": "the last four digits are 8,752",
+    "hi-IN": "दी लास्ट फोर डिजिट्स आर एट थाउज़ंड 752"
+  },
+  "reply_text": "Thank you for verifying. Your order 2629 5015 has been shipped and is expected to be delivered by the 22nd of October 2026. How can I help you with it today?",
+  "reply_spoken_text": "Thank you for verifying. Your order 2629 5015 has been shipped and is expected to be delivered by the 22nd of October 2026. How can I help you with it today?",
+  "reply_audio": "call1_03_reply.wav",
+  "decision": "answer",
+  "sources_used": [
+    "IDV-2",
+    "STY-3"
+  ],
+  "chunks_used": [
+    {
+      "id": "IDV-2",
+      "title": "How to verify",
+      "doc": "AGT-IDV",
+      "text": "Ask for the order ID, then ask for **one** of: the last 4 digits of the registered phone number, or the delivery pincode for that order. Compare with the `phone_last4` or `delivery_pincode` fields from order lookup."
+    },
+    {
+      "id": "STY-3",
+      "title": "Voice replies",
+      "doc": "AGT-STY",
+      "text": "When replying by voice, keep it to two or three short sentences. Say dates with the month name (\"the 24th of October\"), read order IDs in groups of four digits, and say amounts in rupees (\"forty-nine rupees\")."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "CAN-2",
+      "title": "After the order ships",
+      "doc": "POL-CAN",
+      "score": 0.0291,
+      "text": "A shipped order cannot be cancelled. The customer can:\n- refuse the parcel at the door. For cash-on-delivery orders nothing is charged. For prepaid orders the refund follows REF-1 once the parcel returns to the warehouse; or\n- accept the delivery and return the item within its return window, if the category is returnable."
+    },
+    {
+      "id": "KB-00.2",
+      "title": "Today's date",
+      "doc": "KB-00",
+      "score": 0.0289,
+      "text": "All records in this dataset are frozen on **20 October 2026**. Treat this date as \"today\" when you calculate deadlines, delays and refund timelines."
+    },
+    {
+      "id": "CPN-3",
+      "title": "Returns and coupons",
+      "doc": "POL-CPN",
+      "score": 0.0264,
+      "text": "See REF-4 in the Refunds policy."
+    },
+    {
+      "id": "REF-6",
+      "title": "Refund reference number",
+      "doc": "POL-REF",
+      "score": 0.0261,
+      "text": "Every initiated refund has a refund reference number (RRN) that the customer's bank can trace. Share it when a customer says the money has not arrived."
+    },
+    {
+      "id": "REF-1",
+      "title": "When a refund is initiated",
+      "doc": "POL-REF",
+      "score": 0.0245,
+      "text": "- **Cancelled before shipping:** immediately on cancellation.\n- **Returned item:** after the item passes quality check, within 2 business days of pickup. ZentroMart Plus members: at pickup.\n- **Prepaid order refused at the door or not delivered after 3 attempts:** once the parcel reaches the warehouse, usually 7 to 10 calendar days after the last delivery attempt."
+    },
+    {
+      "id": "CPN-2",
+      "title": "Expired or failed coupons",
+      "doc": "POL-CPN",
+      "score": 0.0241,
+      "text": "A coupon that was valid but failed to apply because of a technical error can be re-issued once by support if the order was placed within the coupon's validity. Coupons that had already expired cannot be re-issued."
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "lookup_order",
+      "args": {
+        "order_id": "26295015"
+      },
+      "result": {
+        "verification_required": true,
+        "order_id": "26295015",
+        "message": "Ask for the registered phone last 4 digits OR delivery pincode."
+      }
+    },
+    {
+      "tool": "lookup_order",
+      "args": {
+        "order_id": "26295015",
+        "verification_value": "****"
+      },
+      "result": {
+        "found": true,
+        "verified": true,
+        "order_id": "26295015",
+        "placed_at": "2026-10-11T12:49",
+        "status": "shipped",
+        "payment_method": "cod",
+        "delivery_type": "standard",
+        "promised_date": "2026-10-22",
+        "shipped_on": "2026-10-12",
+        "delivered_on": null,
+        "delivery_attempts": 0,
+        "subtotal_inr": 1848
+      }
+    }
+  ],
+  "seconds": 14.73,
+  "error": ""
+}

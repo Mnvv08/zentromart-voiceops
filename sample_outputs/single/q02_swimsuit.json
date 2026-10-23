@@ -1,0 +1,117 @@
+{
+  "file": "q02_swimsuit.wav",
+  "call": "q02_swimsuit",
+  "turn": 1,
+  "transcript": "the comfy one piece swimsuit doesn't fit can i send it back",
+  "stt_transcripts": {
+    "en-IN": "the comfy one piece swimsuit doesn't fit can i send it back",
+    "hi-IN": "दी कॉम्फ़ी वन पीस स्विमसूट दोएसंत फ़िट कैन आई सेंड"
+  },
+  "reply_text": "Hello, I am ZentroMart's AI support assistant. I am sorry, but the Comfi One-piece Swimsuit cannot be returned for fit or change of mind as swimwear is a non-returnable category. Returns for these items are only accepted if the product arrived damaged or was the wrong item.",
+  "reply_spoken_text": "Hello, I am ZentroMart's AI support assistant. I am sorry, but the Comfi One-piece Swimsuit cannot be returned for fit or change of mind as swimwear is a non-returnable category. Returns for these items are only accepted if the product arrived damaged or was the wrong item.",
+  "reply_audio": "q02_swimsuit_reply.wav",
+  "decision": "answer",
+  "sources_used": [
+    "STY-1",
+    "RET-2",
+    "RET-5",
+    "products.csv:INR-0067"
+  ],
+  "chunks_used": [
+    {
+      "id": "products.csv:INR-0067",
+      "title": "Comfi One-piece Swimsuit, Blue",
+      "doc": "CATALOG",
+      "score": 1.0,
+      "text": "SKU INR-0067: Comfi One-piece Swimsuit, Blue (brand Comfi). return_category: innerwear. price_inr: 1959. fulfilled_by: ZentroMart. assured: False. warranty_months: 0. Comfi One-piece Swimsuit, Blue. Sold on ZentroMart."
+    },
+    {
+      "id": "RET-2",
+      "title": "Return windows by category",
+      "doc": "POL-RET",
+      "score": 0.5,
+      "text": "The return window starts on the **delivery date** and is counted in calendar days. The category of every product is listed in the `return_category` column of the product catalog.\n\n| Category | Return window | Catalog code |\n| --- | --- | --- |\n| Electronics and accessories | 7 days | `electronics` |\n| Clothing, footwear and bags | 15 days | `fashion` |\n| Home, kitchen and furniture | 10 days | `home_kitchen` |\n| Beauty and personal care (unopened, seal intact) | 7 days | `beauty_sealed` |\n| Books and stationery | 10 days | `books_media` |\n| Grocery, fresh and perishables | Not returnable | `grocery` |\n| Innerwear, lingerie and swimwear | Not returnable | `innerwear` |\n| Gift cards and digital codes | Not returnable | `digital` |"
+    },
+    {
+      "id": "RET-5",
+      "title": "Items that cannot be returned",
+      "doc": "POL-RET",
+      "score": 0.024,
+      "text": "Grocery and fresh produce, innerwear, lingerie and swimwear, and gift cards or digital codes cannot be returned for change of mind. If such an item arrives damaged, expired, wrong or missing, follow the Damaged, wrong or missing items policy."
+    },
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "products.csv:INR-0067",
+      "title": "Comfi One-piece Swimsuit, Blue",
+      "doc": "CATALOG",
+      "score": 1.0,
+      "text": "SKU INR-0067: Comfi One-piece Swimsuit, Blue (brand Comfi). return_category: innerwear. price_inr: 1959. fulfilled_by: ZentroMart. assured: False. warranty_months: 0. Comfi One-piece Swimsuit, Blue. Sold on ZentroMart."
+    },
+    {
+      "id": "RET-2",
+      "title": "Return windows by category",
+      "doc": "POL-RET",
+      "score": 0.5,
+      "text": "The return window starts on the **delivery date** and is counted in calendar days. The category of every product is listed in the `return_category` column of the product catalog.\n\n| Category | Return window | Catalog code |\n| --- | --- | --- |\n| Electronics and accessories | 7 days | `electronics` |\n| Clothing, footwear and bags | 15 days | `fashion` |\n| Home, kitchen and furniture | 10 days | `home_kitchen` |\n| Beauty and personal care (unopened, seal intact) | 7 days | `beauty_sealed` |\n| Books and stationery | 10 days | `books_media` |\n| Grocery, fresh and perishables | Not returnable | `grocery` |\n| Innerwear, lingerie and swimwear | Not returnable | `innerwear` |\n| Gift cards and digital codes | Not returnable | `digital` |"
+    },
+    {
+      "id": "products.csv:INR-0068",
+      "title": "Comfi One-piece Swimsuit, Black",
+      "doc": "CATALOG",
+      "score": 1.0,
+      "text": "SKU INR-0068: Comfi One-piece Swimsuit, Black (brand Comfi). return_category: innerwear. price_inr: 1619. fulfilled_by: Kalpana Fashions. assured: False. warranty_months: 0. Comfi One-piece Swimsuit, Black. Sold on ZentroMart. Ships from a marketplace seller."
+    },
+    {
+      "id": "DWM-2",
+      "title": "Resolution",
+      "doc": "POL-DWM",
+      "score": 0.029,
+      "text": "After verification the customer gets a free replacement or a full refund, including delivery fees. No reverse pickup fee applies."
+    },
+    {
+      "id": "RET-6",
+      "title": "Reverse pickup and fees",
+      "doc": "POL-RET",
+      "score": 0.0284,
+      "text": "Returns are collected from the delivery address through reverse pickup. A reverse pickup fee of ₹49 applies to change-of-mind returns of clothing, footwear and bags. The fee is waived for ZentroMart Plus members and for any item returned because it was damaged, defective or wrong."
+    },
+    {
+      "id": "RET-4",
+      "title": "Condition of returned items",
+      "doc": "POL-RET",
+      "score": 0.0243,
+      "text": "Items must be unused, with original tags, packaging, accessories and free gifts. Beauty and personal care products are returnable only if unopened with the seal intact. Electronics must not be physically damaged, and any screen lock or account lock must be removed."
+    },
+    {
+      "id": "RVP-1",
+      "title": "Booking",
+      "doc": "HLP-RVP",
+      "score": 0.0243,
+      "text": "Raise the return from My Orders. Choose a pickup slot. The delivery executive will check the item at the door against the condition rules in RET-4."
+    },
+    {
+      "id": "DWM-5",
+      "title": "Safety issues",
+      "doc": "POL-DWM",
+      "score": 0.0242,
+      "text": "If a product shows a safety risk, such as a swelling battery, burning smell, sparks or heat, the customer must stop using it immediately. The agent must hand over to a human at once."
+    },
+    {
+      "id": "RET-5",
+      "title": "Items that cannot be returned",
+      "doc": "POL-RET",
+      "score": 0.024,
+      "text": "Grocery and fresh produce, innerwear, lingerie and swimwear, and gift cards or digital codes cannot be returned for change of mind. If such an item arrives damaged, expired, wrong or missing, follow the Damaged, wrong or missing items policy."
+    }
+  ],
+  "tool_calls": [],
+  "seconds": 12.53,
+  "error": ""
+}

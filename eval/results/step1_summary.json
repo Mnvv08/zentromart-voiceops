@@ -1,0 +1,14 @@
+{
+  "run": "step1",
+  "model": "groq:openai/gpt-oss-120b",
+  "n": 52,
+  "correct": 13,
+  "accuracy": 0.25,
+  "decision_acc": 0.615,
+  "must_include_acc": 0.308,
+  "must_not_ok": 1.0,
+  "retrieval_recall_cited": 0.0,
+  "retrieval_recall_retrieved": 0.0,
+  "avg_latency_s": 2.645,
+  "time": "2026-10-23 14:25"
+}

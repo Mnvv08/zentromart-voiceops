@@ -1,0 +1,74 @@
+<!doctype html><html><head><meta charset="utf-8"><title>ZentroMart VoiceOps report</title>
+<style>
+@page { size: A4; margin: 15mm 16mm; }
+body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 10.3pt; color:#1f2933; line-height:1.42; }
+h1 { font-size: 19pt; margin:0 0 2px; } h2 { font-size: 12.5pt; margin: 14px 0 5px; color:#3b2fb0; border-bottom:1px solid #e5e1f7; padding-bottom:2px; }
+.sub { color:#6b7280; margin-bottom:8px; }
+table { border-collapse: collapse; width:100%; margin:6px 0; font-size:9.6pt; }
+th, td { border:1px solid #ddd; padding:4px 6px; text-align:left; vertical-align:top; } th { background:#f4f2fb; }
+.bar { display:flex; align-items:center; gap:8px; margin:3px 0; font-size:9.6pt; }
+.bl { width:190px; } .track { width:360px; height:13px; background:#eee; border-radius:3px; display:inline-block; }
+.fill { display:block; height:13px; border-radius:3px; } .bv { font-weight:600; }
+code { background:#f3f3f3; padding:0 3px; border-radius:3px; font-size:9pt; }
+ul { margin:3px 0 3px 18px; padding:0; } li { margin:1px 0; }
+.pipe { background:#f7f5ff; border:1px solid #e5e1f7; padding:6px 10px; border-radius:6px; font-family: monospace; font-size:9pt; }
+</style></head><body>
+<h1>ZentroMart VoiceOps: grounded voice support agent</h1>
+<div class="sub">VoiceOps 2026 capstone · Rishi Parihar · LLM: Groq <code>openai/gpt-oss-120b</code> (fallbacks: Qwen 3.8 27B on Groq, Gemini Flash) · Speech: Gnani STT + TTS only</div>
+<div class="pipe">customer audio → Gnani STT (en-IN + hi-IN) → agent [hybrid RAG · conversation state · lookup_order · create_ticket · date tool] → Gnani TTS (timbre-v2.5) → spoken reply</div>
+
+<h2>1. What I built in each step</h2>
+<table>
+<tr><th style="width:17%">Step</th><th>What it does</th></tr>
+<tr><td><b>1 · LLM only</b></td><td>System prompt that sets the role (ZentroMart's AI support assistant), its limits (no promises, no other customers' data, say when unsure) and an output contract ending with <code>DECISION:</code> and <code>SOURCES:</code>. No documents, no tools.</td></tr>
+<tr><td><b>2 · Grounded (RAG)</b></td><td>Each <code>## [SECTION-ID]</code> becomes one chunk with its doc metadata (doc type, status, effective_from, superseded banner); each catalog row becomes a <code>products.csv:SKU</code> chunk (137 chunks). Retrieval = multilingual embeddings (paraphrase-multilingual-MiniLM, local ONNX) in a NumPy vector index + BM25 with a small Hindi/Hinglish/English synonym list, merged by reciprocal-rank fusion and re-ranked by the KB-00.1 precedence (policy &gt; agent guide &gt; help &gt; FAQ &gt; marketing; superseded down-weighted). A product mention also brings in the policy section that defines its catalog code (two-source answers, e.g. <code>fashion</code> → RET-2). The model must answer only from the given sections, say "I don't have information" otherwise, and cite the IDs it used. IDs are checked against the real index.</td></tr>
+<tr><td><b>3 · Conversation</b></td><td>Conversation memory (last 10 messages and a structured order state). Order IDs and verification values are detected in code, including spoken digits ("eight nine seven eight…", "aath nau…"), and sent to the dataset's <code>lookup_order</code>. One retry, then locked. Order data reaches the LLM only after <code>verified=True</code>, and secrets are masked in logs and ticket summaries. <code>create_ticket</code> is an LLM tool, and a code check re-prompts the model if it claims a handover without a successful ticket. A <code>date_calc</code> tool plus a pre-computed date helper handle business days (Mon–Sat minus holidays) and calendar-day return windows. Decision labels for the steps the code performs (verification, ticket) are set deterministically.</td></tr>
+<tr><td><b>4 · Voice</b></td><td>Gnani REST STT runs each clip in en-IN and hi-IN in parallel. A Hinglish detector tells the agent which language was spoken, and long WAVs are split under 60 s. The agent's reply is rewritten for the ear (dates with month and year, order IDs in groups of four, "49 rupees", no ticket hashes) and spoken with Gnani TTS <code>timbre-v2.5</code> (Kaveri for English, Nalini for Hindi). Empty audio gives "Sorry, I didn't catch that". <code>python run.py --input audio/ --output outputs/</code> saves the reply text, reply audio, cited chunks, retrieved chunks and tool calls per file. A browser demo (<code>web/app.py</code>) records the microphone as WAV.</td></tr>
+</table>
+
+<h2>2. Step 1 vs Step 2 on the 52 practice questions</h2>
+<div class="bar"><span class="bl">Step 1 · prompt only</span><span class="track"><span class="fill" style="width:90px;background:#c9c3ef"></span></span><span class="bv">25%</span></div>
+<div class="bar"><span class="bl">Step 2 · RAG + tools</span><span class="track"><span class="fill" style="width:276px;background:#5b4bdb"></span></span><span class="bv">77%</span></div>
+
+<table>
+<tr><th>Metric</th><th>Step 1</th><th>Step 2</th></tr>
+<tr><td>Fully correct (decision ✓, all must_include facts, no forbidden phrase)</td><td><b>13/52</b> (25%)</td><td><b>40/52</b> (77%)</td></tr>
+<tr><td>Right decision (answer / clarify / escalate / refuse)</td><td>62%</td><td>86%</td></tr>
+<tr><td>All required facts present</td><td>31%</td><td>83%</td></tr>
+<tr><td>Gold evidence recall: cited sources / retrieved chunks</td><td>– / –</td><td>71% / 73%</td></tr>
+<tr><td>By language (correct)</td><td>en: 9/33, hi: 3/8, hi-en: 1/11</td><td>en: 27/33, hi: 6/8, hi-en: 7/11</td></tr>
+</table>
+<p><i>After the fixes in section 4, re-running only the 12 questions that had failed gave 8/12 correct, which would make Step 2 48/52 if the other answers stay the same.</i></p>
+<p><b>What I learned.</b> Without documents the model sounds confident but invents ZentroMart-specific numbers: wallet refunds "3–5 days", UPI "2–5 days", a 10-day electronics window (the superseded v3 rule), no student discount instead of "I don't know". It also asks for an order ID instead of answering general policy questions, and it never escalates. Grounding fixed the facts. The gains on date questions came from computing dates in code rather than in the model, and the "I don't know" cases needed an explicit rule not to state what ZentroMart does or does not offer. Scoring is my own automatic check (DATA_DICTIONARY rules with date normalisation), so it is strict about wording: a correct Hindi answer that transliterates "QC" can be marked wrong.</p>
+
+<h2>3. Step 3: 23 practice conversations (96 customer turns)</h2>
+<table>
+<tr><th>Metric</th><th>First run</th><th>Final</th></tr>
+<tr><td>Turns fully correct (decision, facts, forbidden phrases, expected tool calls)</td><td>73/96 (76%)</td><td><b>89/96</b> (93%)</td></tr>
+<tr><td>Expected tool calls (lookup_order with/without verification, create_ticket)</td><td>93%</td><td>99%</td></tr>
+<tr><td>Decision accuracy</td><td>80%</td><td>97%</td></tr>
+<tr><td>Conversations correct at every turn</td><td>5/23</td><td>16/23</td></tr>
+<tr><td>Forbidden claims ("I have cancelled", "approved", leaked pincode…)</td><td>0% of turns</td><td>0% of turns</td></tr>
+</table>
+
+<h2>4. What went wrong and how I fixed it</h2>
+<ul>
+<li><b>Free-tier limits.</b> Groq allows 8,000 tokens/min, and the first prompt (all agent guides plus 8 verbose chunks) used about 9k per turn. I compacted the chunk rendering and moved KB-00 into retrieval (about 3k tokens per call), and added an automatic fallback chain (Groq gpt-oss-120b → Groq Qwen → Gemini Flash) with per-model cool-downs. Gemini rejected tool histories created by another model (missing <code>thought_signature</code>), so the history is replayed as text when that happens.</li>
+<li><b>A weak fallback hurt quality.</b> In the first Step 2 run (40/52) almost every miss came from Gemini Flash Lite, which skipped the date tool and miscounted business days. I removed it and added a pre-computed date helper for every date the customer mentions.</li>
+<li><b>Language drift.</b> English conversations sometimes got Hinglish replies. The customer's language is now detected in code and stated to the model on every turn.</li>
+<li><b>Decision labels and verification turns.</b> The model escalated on the verification turn when <code>contacts_last_7_days=2</code>, or called a verification question "answer". Labels for code-driven steps are now deterministic, and <code>create_ticket</code> is not offered on a turn that only answers the verification question.</li>
+<li><b>Intro.</b> STY-1 is guaranteed in code: if the first reply doesn't say "AI", an introduction in the reply's language is prepended.</li>
+</ul>
+<p><b>Still failing in the final runs:</b></p>
+<ul><li><b>PQ0022</b>: 2026-10-27 / 27 October 2026 / 27 अक्टूबर 2026</li><li><b>PQ0023</b>: ticket / colleague / human / team / connect / टिकट / सहयोगी</li><li><b>PQ0027</b>: 2026-10-15 / 15 October 2026 / 15 अक्टूबर 2026</li><li><b>PQ0031</b>: 30, 10</li><li><b>PQ0035</b>: 2026-10-17 / 17 October 2026 / 17 अक्टूबर 2026</li><li><b>PQ0037</b>: don't have / do not have / not sure / no information / can't find / not able to find / couldn't find / जानकारी नहीं / pata nahi / jaankari nahi / connect / सहयोगी</li><li><b>PC002 t4</b>: expected escalate, got refuse</li><li><b>PC004 t4</b>: expected answer, got answer; missing 2026-11-13 / 13 November 2026 / 13 नवंबर 2026, 49</li><li><b>PC008 t3</b>: expected answer, got escalate</li><li><b>PC018 t4</b>: expected answer, got refuse; missing My Orders / app / free</li><li><b>PC019 t4</b>: expected refuse, got refuse; missing 7</li><li><b>PC020 t4</b>: expected refuse, got refuse; missing 7</li></ul>
+<p><b>What I would fix next:</b> a small LLM judge for semantic scoring of Hindi answers; a cross-encoder re-ranker and Gemini embeddings to raise cited-source precision; streaming STT/TTS (Gnani WebSocket) to cut latency (currently about 15.336 s per turn on free-tier keys); confidence-based "please repeat" using STT disagreement between the en-IN and hi-IN passes.</p>
+
+<h2>5. Bonus work</h2>
+<ul>
+<li>Dual-language STT (en-IN + hi-IN) with automatic Hindi/Hinglish detection, and Hindi TTS voice switching.</li>
+<li>Spoken-number normalisation for order IDs, SKUs and verification digits in English, Hinglish and Hindi.</li>
+<li>Browser voice demo that records WAV in the page (no ffmpeg needed) and shows decision, tools and cited sections.</li>
+<li>Provider-agnostic LLM layer (any OpenAI-compatible API) with rate-limit-aware fallback, so long batch runs finish on free keys.</li>
+<li>Reproducible evaluation: <code>python eval/run_eval.py --step 1|2|3 [--asr]</code> writes every reply, decision, tool call and source to <code>eval/results/</code>.</li>
+</ul>
+</body></html>

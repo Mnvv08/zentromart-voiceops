@@ -1,0 +1,11 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+.cache/
+outputs/
+Capstone_Project_Dataset_FTTT_2026/
+*.zip
+.DS_Store
+eval/results/*.jsonl

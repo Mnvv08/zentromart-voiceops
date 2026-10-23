@@ -1,0 +1,151 @@
+{
+  "file": "q03_laptop_crack.wav",
+  "call": "q03_laptop_crack",
+  "turn": 1,
+  "transcript": "the kestrel book 14 laptop i received yesterday has a crack i want it sorted",
+  "stt_transcripts": {
+    "en-IN": "the kestrel book 14 laptop i received yesterday has a crack i want it sorted",
+    "hi-IN": "दी केस्ट्रल बुक 14 लैपटॉप आई रिसीव्ड यस्टर्डे"
+  },
+  "reply_text": "I am ZentroMart's AI support assistant. I am sorry to hear that your Kestrel Book 14 laptop arrived with a crack. I have shared this with my human colleagues in the Priority Resolution team who will contact you to resolve this.",
+  "reply_spoken_text": "I am ZentroMart's AI support assistant. I am sorry to hear that your Kestrel Book 14 laptop arrived with a crack. I have shared this with my human colleagues in the Priority Resolution team who will contact you to resolve this.",
+  "reply_audio": "q03_laptop_crack_reply.wav",
+  "decision": "escalate",
+  "sources_used": [
+    "STY-1",
+    "STY-3",
+    "ESC-1",
+    "ESC-2",
+    "DWM-3",
+    "products.csv:ELE-0022",
+    "products.csv:ELE-0023"
+  ],
+  "chunks_used": [
+    {
+      "id": "products.csv:ELE-0022",
+      "title": "Kestrel Book 14 Laptop, Black",
+      "doc": "CATALOG",
+      "score": 1.0,
+      "text": "SKU ELE-0022: Kestrel Book 14 Laptop, Black (brand Kestrel). return_category: electronics. price_inr: 51439. fulfilled_by: ZentroMart. assured: False. warranty_months: 12. Kestrel Book 14 Laptop, Black. Sold on ZentroMart."
+    },
+    {
+      "id": "products.csv:ELE-0023",
+      "title": "Kestrel Book 14 Laptop, Grey",
+      "doc": "CATALOG",
+      "score": 1.0,
+      "text": "SKU ELE-0023: Kestrel Book 14 Laptop, Grey (brand Kestrel). return_category: electronics. price_inr: 45999. fulfilled_by: ZentroMart. assured: False. warranty_months: 12. Kestrel Book 14 Laptop, Grey. Sold on ZentroMart."
+    },
+    {
+      "id": "DWM-3",
+      "title": "High-value items",
+      "doc": "POL-DWM",
+      "score": 0.0225,
+      "text": "Claims for items worth more than ₹10,000 are handled by the Priority Resolution team. The support agent must create a ticket and hand over; the agent cannot approve these claims."
+    },
+    {
+      "id": "STY-1",
+      "title": "Opening",
+      "doc": "AGT-STY",
+      "text": "Introduce yourself as ZentroMart's AI support assistant in your first reply."
+    },
+    {
+      "id": "STY-3",
+      "title": "Voice replies",
+      "doc": "AGT-STY",
+      "text": "When replying by voice, keep it to two or three short sentences. Say dates with the month name (\"the 24th of October\"), read order IDs in groups of four digits, and say amounts in rupees (\"forty-nine rupees\")."
+    },
+    {
+      "id": "ESC-1",
+      "title": "When to hand over to a human",
+      "doc": "AGT-ESC",
+      "text": "Hand over at once when any of these is true:\n\n1. **Damaged, defective or wrong item worth more than ₹10,000.**\n2. **Customer reports an order, payment or account activity they did not make.**\n3. **Customer mentions legal action, a consumer court or a police complaint.**\n4. **Third or later contact about the same issue within 7 days.**\n5. **Refund more than 3 business days past its maximum timeline.**\n6. **Customer asks for a human agent.**\n7. **Product safety risk such as a swelling battery, burning smell, sparks or injury.**\n\nFor the repeat-contact rule, use the `contacts_last_7_days` field returned by order lookup. It counts earlier contacts only, not the current one. Escalate when it is 2 or more."
+    },
+    {
+      "id": "ESC-2",
+      "title": "What to do first",
+      "doc": "AGT-ESC",
+      "text": "Create a ticket with `create_ticket` before handing over. Tell the customer a human colleague will contact them, and never promise an outcome, amount or time beyond what a policy states."
+    }
+  ],
+  "chunks_retrieved": [
+    {
+      "id": "products.csv:ELE-0022",
+      "title": "Kestrel Book 14 Laptop, Black",
+      "doc": "CATALOG",
+      "score": 1.0,
+      "text": "SKU ELE-0022: Kestrel Book 14 Laptop, Black (brand Kestrel). return_category: electronics. price_inr: 51439. fulfilled_by: ZentroMart. assured: False. warranty_months: 12. Kestrel Book 14 Laptop, Black. Sold on ZentroMart."
+    },
+    {
+      "id": "RET-2",
+      "title": "Return windows by category",
+      "doc": "POL-RET",
+      "score": 0.5,
+      "text": "The return window starts on the **delivery date** and is counted in calendar days. The category of every product is listed in the `return_category` column of the product catalog.\n\n| Category | Return window | Catalog code |\n| --- | --- | --- |\n| Electronics and accessories | 7 days | `electronics` |\n| Clothing, footwear and bags | 15 days | `fashion` |\n| Home, kitchen and furniture | 10 days | `home_kitchen` |\n| Beauty and personal care (unopened, seal intact) | 7 days | `beauty_sealed` |\n| Books and stationery | 10 days | `books_media` |\n| Grocery, fresh and perishables | Not returnable | `grocery` |\n| Innerwear, lingerie and swimwear | Not returnable | `innerwear` |\n| Gift cards and digital codes | Not returnable | `digital` |"
+    },
+    {
+      "id": "products.csv:ELE-0023",
+      "title": "Kestrel Book 14 Laptop, Grey",
+      "doc": "CATALOG",
+      "score": 1.0,
+      "text": "SKU ELE-0023: Kestrel Book 14 Laptop, Grey (brand Kestrel). return_category: electronics. price_inr: 45999. fulfilled_by: ZentroMart. assured: False. warranty_months: 12. Kestrel Book 14 Laptop, Grey. Sold on ZentroMart."
+    },
+    {
+      "id": "TRB-2",
+      "title": "Smartwatch not syncing",
+      "doc": "HLP-TRB",
+      "score": 0.0236,
+      "text": "1. Make sure the companion app has Bluetooth and location permission.\n2. Restart the watch and the phone.\n3. Unpair the watch in the app and pair it again."
+    },
+    {
+      "id": "TRK-2",
+      "title": "Delivered but not received",
+      "doc": "HLP-TRK",
+      "score": 0.0229,
+      "text": "If an order shows Delivered but the customer has not received it, check with family, neighbours or the building security, then report it within 48 hours as a missing item under DWM-1."
+    },
+    {
+      "id": "DWM-3",
+      "title": "High-value items",
+      "doc": "POL-DWM",
+      "score": 0.0225,
+      "text": "Claims for items worth more than ₹10,000 are handled by the Priority Resolution team. The support agent must create a ticket and hand over; the agent cannot approve these claims."
+    },
+    {
+      "id": "DWM-1",
+      "title": "Reporting window",
+      "doc": "POL-DWM",
+      "score": 0.0216,
+      "text": "Report a damaged, defective, expired, wrong or missing item within **48 hours of delivery**, with photos of the item and the packaging. This applies to every category, including grocery and other non-returnable items."
+    },
+    {
+      "id": "REF-6",
+      "title": "Refund reference number",
+      "doc": "POL-REF",
+      "score": 0.0211,
+      "text": "Every initiated refund has a refund reference number (RRN) that the customer's bank can trace. Share it when a customer says the money has not arrived."
+    },
+    {
+      "id": "FAQ-2",
+      "title": "Can I return something I bought?",
+      "doc": "FAQ-GEN",
+      "score": 0.0209,
+      "text": "Most items can be returned within the return window. Some items, like grocery, cannot be returned."
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "create_ticket",
+      "args": {
+        "summary": "Customer reports a crack on a Kestrel Book 14 laptop received on 19 October 2026. Item value is over ten thousand rupees. No order ID provided. Escalating for high-value damage.",
+        "order_id": null,
+        "reason": "high_value_damage"
+      },
+      "result": {
+        "created": true,
+        "ticket_id": "TKT6055681ea44f44b0afea78fd0fc91d52"
+      }
+    }
+  ],
+  "seconds": 14.38,
+  "error": ""
+}
